@@ -1,2 +1,3 @@
 # dundie-rewards
 point rewards system for company
+PROJETO BASICO PARA TESTES DE RECOMPENSA PARA "USUARIOS" DE UMA EMPRESA...
