@@ -1,1 +1,2 @@
-print("Main inicializando: [dundie]")
+def main():
+    print("INICIALIZANDO MAIN...")

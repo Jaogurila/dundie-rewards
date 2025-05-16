@@ -6,4 +6,9 @@ setup(
     description="Recompensa de pontos, bonus para funcionarios da empresa.",
     author="João Gurzilo",
     packages=find_packages(),
+    entry_points={
+        "console_scripts": [
+            "dundiegur = dundie.__main__:main"
+        ]
+    }      
 )
