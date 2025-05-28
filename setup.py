@@ -1,14 +1,27 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages # type: ignore
+
 
 setup(
-    name="dundiegur",
+    name="dundie",
     version="0.1.0",
-    description="Recompensa de pontos, bonus para funcionarios da empresa.",
-    author="João Gurzilo",
+    description="Reward Point System for Dunder Mifflin",
+    author="Bruno Rocha",
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "dundiegur = dundie.__main__:main"
+            "dundie = dundie.__main__:main"
         ]
-    }      
+    },
+    install_requires=[],
+    extras_require={
+        "test": [
+            "pytest"
+        ],
+        "dev": [
+            "ipdb",
+            "ipython",
+            "pudb"
+        ]
+    },
 )
+

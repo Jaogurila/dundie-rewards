@@ -1,32 +1,39 @@
-import sys
-import os
-#teste inicial para a passagem de argumentos 
-def main():
-    print("INICIALIZANDO MAIN...")
+import argparse
 
-    if len(sys.argv) < 3:
-        print("Uso correto: dundiegur argumento1 argumento2")
-        sys.exit(1)
 
-    primeiro_comando = sys.argv[1]
-    segundo_comando = sys.argv[2]
+def load(filepath):
+    """Loads data from filepath to the database"""
     try:
-        if primeiro_comando == "load":
-            with open(segundo_comando, "a") as arquivo:
-                arquivo.write("100 PONTOS\n")
-                print("PONTOS ADICIONADOS COM SUCESSO!")
-        else: 
-            print("NAO FOI POSSIVEL ADICIONAR PONTOS:")
-    except Exception as e:
-        print(f"ERRO: {e}")
+        with open(filepath) as file_:
+            for line in file_:
+                print(line)
+    except FileNotFoundError as e:
+        print(f"File not found {e}")
 
 
+def main():
+    parser = argparse.ArgumentParser(
+        description="Dunder Mifflin Rewards CLI",
+        epilog="Enjoy and use with cautious.",
+    )   
+    parser.add_argument(
+        "subcommand",
+        type=str,
+        help="The subcommand to run",
+        choices=("load", "show", "send"),
+        default="help",
+    )
+    parser.add_argument(
+        "filepath",
+        type=str,
+        help="File path to load",
+        default=None,
+    )
+    args = parser.parse_args()
 
-
-
-
-
-
+    
+    globals()[args.subcommand](args.filepath)    
+    
 
 if __name__ == "__main__":
     main()
